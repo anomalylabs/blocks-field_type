@@ -1,0 +1,44 @@
+{{ asset_add('styles.css', 'anomaly.field_type.blocks::scss/blocks.scss') }}
+
+{{ asset_add("scripts.js", "anomaly.field_type.repeater::js/cookie.min.js") }}
+{{ asset_add("scripts.js", "streams::js/table/jquery-sortable.js") }}
+{{ asset_add('scripts.js', 'anomaly.field_type.blocks::js/input.js') }}
+
+{% set instance = str_random() %}
+
+<div {{ html_attributes(field_type.attributes) }} data-instance="{{ instance }}">
+
+    <div class="blocks-list">
+        {% for form in field_type.forms %}
+            {% include "anomaly.field_type.blocks::item" with {'form': form} %}
+        {% endfor %}
+    </div>
+
+    {% if not (field_type.readonly) %}
+    <div class="blocks-controls">
+
+        <a href="{{ url('blocks-field_type/choose/' ~ field_type.id() ~ '?prefix=' ~ field_type.prefix) }}"
+           data-toggle="modal"
+           data-instance="{{ instance }}"
+           class="btn btn-sm btn-success"
+           data-target="#{{ field_type.field_name }}-modal">
+            {{ trans(field_type.config.add_row ?: 'anomaly.field_type.blocks::button.add_row') }}
+        </a>
+
+        {% if field_type.config.manage %}
+            <a href="{{ url('admin/blockss') }}" class="btn btn-sm btn-warning" target="_blank">
+                {{ icon('fa fa-wrench') }}
+                {{ trans('anomaly.field_type.repeater::button.manage') }}
+            </a>
+        {% endif %}
+
+    </div>
+
+    <div class="modal remote" id="{{ field_type.field_name }}-modal"
+         data-loading="{{ trans('anomaly.field_type.blocks::message.loading') }}">
+        <div class="modal-dialog">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+    {% endif %}
+</div>
