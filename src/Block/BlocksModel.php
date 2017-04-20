@@ -1,7 +1,6 @@
 <?php namespace Anomaly\BlocksFieldType\Block;
 
-use Anomaly\BlocksModule\Block\BlockExtension;
-use Anomaly\BlocksModule\Block\Command\RenderBlock;
+use Anomaly\BlocksFieldType\Block\Command\RenderBlock;
 use Anomaly\Streams\Platform\Addon\Command\GetAddon;
 use Anomaly\Streams\Platform\Entry\Contract\EntryInterface;
 use Anomaly\Streams\Platform\Model\EloquentModel;

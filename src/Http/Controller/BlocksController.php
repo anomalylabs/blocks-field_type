@@ -1,7 +1,7 @@
 <?php namespace Anomaly\BlocksFieldType\Http\Controller;
 
 use Anomaly\BlocksFieldType\BlocksFieldType;
-use Anomaly\BlocksModule\Block\BlockExtension;
+use Anomaly\BlocksFieldType\Block\BlockExtension;
 use Anomaly\Streams\Platform\Addon\Extension\ExtensionCollection;
 use Anomaly\Streams\Platform\Field\Contract\FieldInterface;
 use Anomaly\Streams\Platform\Field\Contract\FieldRepositoryInterface;
